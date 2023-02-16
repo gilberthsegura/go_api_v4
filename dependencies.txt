@@ -1,0 +1,5 @@
+"gorm.io/gorm"
+"gorm.io/driver/postgres"
+"github.com/joho/godotenv"
+"github.com/gin-gonic/gin"
+cors "github.com/rs/cors/wrapper/gin"
