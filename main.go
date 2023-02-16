@@ -41,6 +41,7 @@ func serveApp() {
 	router.POST("/picture", controller.AddPicture)
 	router.GET("/picture", controller.GetPictures)
 	router.GET("/picture/:id", controller.GetOnePicture)
+	router.GET("/pictures/:id", controller.GetPicturesByIllustrator)
 	router.POST("/picture/:id", controller.EditPicture)
 	router.DELETE("/picture/:id", controller.RemovePicture)
 

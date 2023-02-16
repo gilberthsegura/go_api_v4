@@ -9,8 +9,8 @@ import (
 
 type Picture struct {
 	gorm.Model
-	Title        string `jon:"title"`
-	IlustratorID uint   `json:"illustrator_id"`
+	Title         string `json:"title"`
+	IllustratorID uint   `json:"illustrator_id"`
 }
 
 // CREATE
@@ -40,6 +40,16 @@ func ReadOnePicture(id string) (Picture, error) {
 		return picture, err
 	}
 	return picture, nil
+}
+
+func ReadPictureByIllustrator(id string) ([]Picture, error) {
+	var pictures []Picture
+	idInt, _ := strconv.Atoi(id)
+	err := database.DB.Where("illustrator_id = ?", idInt).Find(&pictures).Error
+	if err != nil {
+		return pictures, err
+	}
+	return pictures, nil
 }
 
 // UPDATE

@@ -45,6 +45,17 @@ func GetOnePicture(context *gin.Context) {
 	context.JSON(http.StatusOK, picture)
 }
 
+func GetPicturesByIllustrator(context *gin.Context) {
+	//Query the database for a single object
+	id := context.Param("id")
+	pictures, err := model.ReadPictureByIllustrator(id)
+	if err != nil {
+		context.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
+		return
+	}
+	context.JSON(http.StatusOK, pictures)
+}
+
 func EditPicture(context *gin.Context) {
 	//Parse the json with the object model
 	id := context.Param("id")
